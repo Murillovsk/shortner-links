@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+  </head>
+  <body>
+    
+    <div style="text-align: center;" class="container">
+        <h1>Shortner links</h1>
+        <hr>
+
+        <form action="{% url 'validate_link' %}" method="POST">{% csrf_token %}
+          <table>
+              <label>Enter the link you want to redirect: </label>
+              <br>
+            {{ form.redirect_link }}
+
+            <br>
+            <label>Enter how you want your link: </label>
+            <br>
+            <label>murillovsk.com.br</label>
+            {{ form.short_link }}
+                <br>
+                {% if status == "1" %}
+                <p style="color: red;">The link you entered already exists.</p>
+                {% endif %}
+            <input type="submit">
+          </table>
+        </form>
+    </div>
+
+  </body>
+</html>
